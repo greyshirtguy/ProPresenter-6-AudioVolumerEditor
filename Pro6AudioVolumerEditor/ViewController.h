@@ -7,8 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Appkit/Appkit.h>
 
-@interface ViewController : NSViewController
+@interface ViewController : NSViewController <NSCollectionViewDelegate, NSCollectionViewDataSource>
+@property (weak) IBOutlet NSCollectionView *slidesCollectionView;
 
 
 @end

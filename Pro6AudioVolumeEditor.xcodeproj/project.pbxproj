@@ -12,10 +12,20 @@
 		371EE99D2147F08F004ACFA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 371EE99C2147F08F004ACFA0 /* Assets.xcassets */; };
 		371EE9A02147F08F004ACFA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 371EE99E2147F08F004ACFA0 /* Main.storyboard */; };
 		371EE9A32147F08F004ACFA0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 371EE9A22147F08F004ACFA0 /* main.m */; };
+		3771F512214870D70090AADA /* RVSlideViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3771F510214870D70090AADA /* RVSlideViewItem.xib */; };
+		3771F51D2148F6AA0090AADA /* RVPresentationDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F5182148F6A90090AADA /* RVPresentationDocument.m */; };
+		3771F51E2148F6AA0090AADA /* RVMediaCue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F51A2148F6AA0090AADA /* RVMediaCue.m */; };
+		3771F51F2148F6AA0090AADA /* RVDisplaySlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F51B2148F6AA0090AADA /* RVDisplaySlide.m */; };
+		3771F5202148F6AA0090AADA /* RVSlideGrouping.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F51C2148F6AA0090AADA /* RVSlideGrouping.m */; };
+		3771F5232148F7A00090AADA /* RVSlideViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F5222148F7A00090AADA /* RVSlideViewItem.m */; };
+		3771F5282148FAFE0090AADA /* RVAudioCue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F5272148FAFE0090AADA /* RVAudioCue.m */; };
+		3771F52B2148FC9B0090AADA /* RVAudioElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F52A2148FC9B0090AADA /* RVAudioElement.m */; };
+		3771F530214903F10090AADA /* RVImageElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F52E214903F00090AADA /* RVImageElement.m */; };
+		3771F531214903F10090AADA /* RVVideoElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F52F214903F00090AADA /* RVVideoElement.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		371EE9932147F08D004ACFA0 /* Pro6AudioVolumerEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pro6AudioVolumerEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		371EE9932147F08D004ACFA0 /* Pro6AudioVolumeEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pro6AudioVolumeEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		371EE9962147F08D004ACFA0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		371EE9972147F08D004ACFA0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		371EE9992147F08D004ACFA0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -25,6 +35,25 @@
 		371EE9A12147F08F004ACFA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		371EE9A22147F08F004ACFA0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		371EE9A42147F08F004ACFA0 /* Pro6AudioVolumerEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pro6AudioVolumerEditor.entitlements; sourceTree = "<group>"; };
+		3771F510214870D70090AADA /* RVSlideViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RVSlideViewItem.xib; sourceTree = "<group>"; };
+		3771F5152148F6A90090AADA /* RVMediaCue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RVMediaCue.h; sourceTree = "<group>"; };
+		3771F5162148F6A90090AADA /* RVPresentationDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RVPresentationDocument.h; sourceTree = "<group>"; };
+		3771F5172148F6A90090AADA /* RVSlideGrouping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RVSlideGrouping.h; sourceTree = "<group>"; };
+		3771F5182148F6A90090AADA /* RVPresentationDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RVPresentationDocument.m; sourceTree = "<group>"; };
+		3771F5192148F6AA0090AADA /* RVDisplaySlide.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RVDisplaySlide.h; sourceTree = "<group>"; };
+		3771F51A2148F6AA0090AADA /* RVMediaCue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RVMediaCue.m; sourceTree = "<group>"; };
+		3771F51B2148F6AA0090AADA /* RVDisplaySlide.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RVDisplaySlide.m; sourceTree = "<group>"; };
+		3771F51C2148F6AA0090AADA /* RVSlideGrouping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RVSlideGrouping.m; sourceTree = "<group>"; };
+		3771F5212148F7A00090AADA /* RVSlideViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVSlideViewItem.h; sourceTree = "<group>"; };
+		3771F5222148F7A00090AADA /* RVSlideViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVSlideViewItem.m; sourceTree = "<group>"; };
+		3771F5262148FAFE0090AADA /* RVAudioCue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RVAudioCue.h; sourceTree = "<group>"; };
+		3771F5272148FAFE0090AADA /* RVAudioCue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RVAudioCue.m; sourceTree = "<group>"; };
+		3771F5292148FC9B0090AADA /* RVAudioElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RVAudioElement.h; sourceTree = "<group>"; };
+		3771F52A2148FC9B0090AADA /* RVAudioElement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RVAudioElement.m; sourceTree = "<group>"; };
+		3771F52C214903F00090AADA /* RVImageElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVImageElement.h; sourceTree = "<group>"; };
+		3771F52D214903F00090AADA /* RVVideoElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVVideoElement.h; sourceTree = "<group>"; };
+		3771F52E214903F00090AADA /* RVImageElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVImageElement.m; sourceTree = "<group>"; };
+		3771F52F214903F00090AADA /* RVVideoElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVVideoElement.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +70,7 @@
 		371EE98A2147F08C004ACFA0 = {
 			isa = PBXGroup;
 			children = (
+				3771F510214870D70090AADA /* RVSlideViewItem.xib */,
 				371EE9952147F08D004ACFA0 /* Pro6AudioVolumerEditor */,
 				371EE9942147F08D004ACFA0 /* Products */,
 			);
@@ -49,7 +79,7 @@
 		371EE9942147F08D004ACFA0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				371EE9932147F08D004ACFA0 /* Pro6AudioVolumerEditor.app */,
+				371EE9932147F08D004ACFA0 /* Pro6AudioVolumeEditor.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,10 +87,28 @@
 		371EE9952147F08D004ACFA0 /* Pro6AudioVolumerEditor */ = {
 			isa = PBXGroup;
 			children = (
+				3771F5262148FAFE0090AADA /* RVAudioCue.h */,
+				3771F5272148FAFE0090AADA /* RVAudioCue.m */,
+				3771F5292148FC9B0090AADA /* RVAudioElement.h */,
+				3771F52A2148FC9B0090AADA /* RVAudioElement.m */,
+				3771F5152148F6A90090AADA /* RVMediaCue.h */,
+				3771F51A2148F6AA0090AADA /* RVMediaCue.m */,
+				3771F52C214903F00090AADA /* RVImageElement.h */,
+				3771F52E214903F00090AADA /* RVImageElement.m */,
+				3771F52D214903F00090AADA /* RVVideoElement.h */,
+				3771F52F214903F00090AADA /* RVVideoElement.m */,
+				3771F5192148F6AA0090AADA /* RVDisplaySlide.h */,
+				3771F51B2148F6AA0090AADA /* RVDisplaySlide.m */,
+				3771F5162148F6A90090AADA /* RVPresentationDocument.h */,
+				3771F5182148F6A90090AADA /* RVPresentationDocument.m */,
+				3771F5172148F6A90090AADA /* RVSlideGrouping.h */,
+				3771F51C2148F6AA0090AADA /* RVSlideGrouping.m */,
 				371EE9962147F08D004ACFA0 /* AppDelegate.h */,
 				371EE9972147F08D004ACFA0 /* AppDelegate.m */,
 				371EE9992147F08D004ACFA0 /* ViewController.h */,
 				371EE99A2147F08D004ACFA0 /* ViewController.m */,
+				3771F5212148F7A00090AADA /* RVSlideViewItem.h */,
+				3771F5222148F7A00090AADA /* RVSlideViewItem.m */,
 				371EE99C2147F08F004ACFA0 /* Assets.xcassets */,
 				371EE99E2147F08F004ACFA0 /* Main.storyboard */,
 				371EE9A12147F08F004ACFA0 /* Info.plist */,
@@ -73,9 +121,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		371EE9922147F08D004ACFA0 /* Pro6AudioVolumerEditor */ = {
+		371EE9922147F08D004ACFA0 /* Pro6AudioVolumeEditor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 371EE9A72147F08F004ACFA0 /* Build configuration list for PBXNativeTarget "Pro6AudioVolumerEditor" */;
+			buildConfigurationList = 371EE9A72147F08F004ACFA0 /* Build configuration list for PBXNativeTarget "Pro6AudioVolumeEditor" */;
 			buildPhases = (
 				371EE98F2147F08D004ACFA0 /* Sources */,
 				371EE9902147F08D004ACFA0 /* Frameworks */,
@@ -85,9 +133,9 @@
 			);
 			dependencies = (
 			);
-			name = Pro6AudioVolumerEditor;
+			name = Pro6AudioVolumeEditor;
 			productName = Pro6AudioVolumerEditor;
-			productReference = 371EE9932147F08D004ACFA0 /* Pro6AudioVolumerEditor.app */;
+			productReference = 371EE9932147F08D004ACFA0 /* Pro6AudioVolumeEditor.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -104,7 +152,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 371EE98E2147F08C004ACFA0 /* Build configuration list for PBXProject "Pro6AudioVolumerEditor" */;
+			buildConfigurationList = 371EE98E2147F08C004ACFA0 /* Build configuration list for PBXProject "Pro6AudioVolumeEditor" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -117,7 +165,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				371EE9922147F08D004ACFA0 /* Pro6AudioVolumerEditor */,
+				371EE9922147F08D004ACFA0 /* Pro6AudioVolumeEditor */,
 			);
 		};
 /* End PBXProject section */
@@ -127,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3771F512214870D70090AADA /* RVSlideViewItem.xib in Resources */,
 				371EE99D2147F08F004ACFA0 /* Assets.xcassets in Resources */,
 				371EE9A02147F08F004ACFA0 /* Main.storyboard in Resources */,
 			);
@@ -139,9 +188,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3771F5282148FAFE0090AADA /* RVAudioCue.m in Sources */,
+				3771F51F2148F6AA0090AADA /* RVDisplaySlide.m in Sources */,
+				3771F51E2148F6AA0090AADA /* RVMediaCue.m in Sources */,
+				3771F530214903F10090AADA /* RVImageElement.m in Sources */,
+				3771F531214903F10090AADA /* RVVideoElement.m in Sources */,
 				371EE99B2147F08D004ACFA0 /* ViewController.m in Sources */,
 				371EE9A32147F08F004ACFA0 /* main.m in Sources */,
+				3771F52B2148FC9B0090AADA /* RVAudioElement.m in Sources */,
+				3771F51D2148F6AA0090AADA /* RVPresentationDocument.m in Sources */,
 				371EE9982147F08D004ACFA0 /* AppDelegate.m in Sources */,
+				3771F5202148F6AA0090AADA /* RVSlideGrouping.m in Sources */,
+				3771F5232148F7A00090AADA /* RVSlideViewItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +338,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.greyshirtguy.Pro6AudioVolumerEditor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.greyshirtguy.Pro6AudioVolumeEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -297,7 +355,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.greyshirtguy.Pro6AudioVolumerEditor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.greyshirtguy.Pro6AudioVolumeEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -305,7 +363,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		371EE98E2147F08C004ACFA0 /* Build configuration list for PBXProject "Pro6AudioVolumerEditor" */ = {
+		371EE98E2147F08C004ACFA0 /* Build configuration list for PBXProject "Pro6AudioVolumeEditor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				371EE9A52147F08F004ACFA0 /* Debug */,
@@ -314,7 +372,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		371EE9A72147F08F004ACFA0 /* Build configuration list for PBXNativeTarget "Pro6AudioVolumerEditor" */ = {
+		371EE9A72147F08F004ACFA0 /* Build configuration list for PBXNativeTarget "Pro6AudioVolumeEditor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				371EE9A82147F08F004ACFA0 /* Debug */,
