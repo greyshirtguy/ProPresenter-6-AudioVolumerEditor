@@ -11,4 +11,5 @@
 @interface RVAudioElement : NSObject
 @property (strong, nonatomic) NSString *source;
 @property (strong, nonatomic) NSString *volume;
+@property (strong, nonatomic) NSString *parentRVAudioCueUUID;
 @end

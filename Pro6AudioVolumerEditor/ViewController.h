@@ -8,10 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Appkit/Appkit.h>
+#import "RVSlideViewItem.h"
 
-@interface ViewController : NSViewController <NSCollectionViewDelegate, NSCollectionViewDataSource>
+@interface ViewController : NSViewController <NSCollectionViewDelegate, NSCollectionViewDataSource, NSTableViewDelegate, NSTableViewDataSource, RVSlideViewItemDelegate>
 @property (weak) IBOutlet NSCollectionView *slidesCollectionView;
-
+@property (weak) IBOutlet NSTableView *libraryTableView;
+@property (weak) IBOutlet NSButtonCell *saveButton;
 
 @end
 

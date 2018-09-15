@@ -22,6 +22,8 @@
 		3771F52B2148FC9B0090AADA /* RVAudioElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F52A2148FC9B0090AADA /* RVAudioElement.m */; };
 		3771F530214903F10090AADA /* RVImageElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F52E214903F00090AADA /* RVImageElement.m */; };
 		3771F531214903F10090AADA /* RVVideoElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F52F214903F00090AADA /* RVVideoElement.m */; };
+		37F35440214CC0FF007FBCAC /* Pro6VolumeEditor.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F3543F214CC0FF007FBCAC /* Pro6VolumeEditor.png */; };
+		37F35446214CC866007FBCAC /* paveWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F35445214CC866007FBCAC /* paveWindowController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,9 @@
 		3771F52D214903F00090AADA /* RVVideoElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVVideoElement.h; sourceTree = "<group>"; };
 		3771F52E214903F00090AADA /* RVImageElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVImageElement.m; sourceTree = "<group>"; };
 		3771F52F214903F00090AADA /* RVVideoElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVVideoElement.m; sourceTree = "<group>"; };
+		37F3543F214CC0FF007FBCAC /* Pro6VolumeEditor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pro6VolumeEditor.png; sourceTree = "<group>"; };
+		37F35444214CC866007FBCAC /* paveWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = paveWindowController.h; sourceTree = "<group>"; };
+		37F35445214CC866007FBCAC /* paveWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = paveWindowController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,12 +96,12 @@
 				3771F5272148FAFE0090AADA /* RVAudioCue.m */,
 				3771F5292148FC9B0090AADA /* RVAudioElement.h */,
 				3771F52A2148FC9B0090AADA /* RVAudioElement.m */,
+				3771F52D214903F00090AADA /* RVVideoElement.h */,
+				3771F52F214903F00090AADA /* RVVideoElement.m */,
 				3771F5152148F6A90090AADA /* RVMediaCue.h */,
 				3771F51A2148F6AA0090AADA /* RVMediaCue.m */,
 				3771F52C214903F00090AADA /* RVImageElement.h */,
 				3771F52E214903F00090AADA /* RVImageElement.m */,
-				3771F52D214903F00090AADA /* RVVideoElement.h */,
-				3771F52F214903F00090AADA /* RVVideoElement.m */,
 				3771F5192148F6AA0090AADA /* RVDisplaySlide.h */,
 				3771F51B2148F6AA0090AADA /* RVDisplaySlide.m */,
 				3771F5162148F6A90090AADA /* RVPresentationDocument.h */,
@@ -107,9 +112,12 @@
 				371EE9972147F08D004ACFA0 /* AppDelegate.m */,
 				371EE9992147F08D004ACFA0 /* ViewController.h */,
 				371EE99A2147F08D004ACFA0 /* ViewController.m */,
+				37F35444214CC866007FBCAC /* paveWindowController.h */,
+				37F35445214CC866007FBCAC /* paveWindowController.m */,
 				3771F5212148F7A00090AADA /* RVSlideViewItem.h */,
 				3771F5222148F7A00090AADA /* RVSlideViewItem.m */,
 				371EE99C2147F08F004ACFA0 /* Assets.xcassets */,
+				37F3543F214CC0FF007FBCAC /* Pro6VolumeEditor.png */,
 				371EE99E2147F08F004ACFA0 /* Main.storyboard */,
 				371EE9A12147F08F004ACFA0 /* Info.plist */,
 				371EE9A22147F08F004ACFA0 /* main.m */,
@@ -176,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3771F512214870D70090AADA /* RVSlideViewItem.xib in Resources */,
+				37F35440214CC0FF007FBCAC /* Pro6VolumeEditor.png in Resources */,
 				371EE99D2147F08F004ACFA0 /* Assets.xcassets in Resources */,
 				371EE9A02147F08F004ACFA0 /* Main.storyboard in Resources */,
 			);
@@ -188,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37F35446214CC866007FBCAC /* paveWindowController.m in Sources */,
 				3771F5282148FAFE0090AADA /* RVAudioCue.m in Sources */,
 				3771F51F2148F6AA0090AADA /* RVDisplaySlide.m in Sources */,
 				3771F51E2148F6AA0090AADA /* RVMediaCue.m in Sources */,
