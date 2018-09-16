@@ -5,7 +5,7 @@ This application lets you open a Pro6 document that has Audio (and Video) cues a
 of each audio (or video) cue on each slide while listening.  Only works on Mac.
 (The windows version of Pro6 doesn't use any custom volumes for audio cues - it ignores them and plays full volume.)
 
-To use:
+How to use this application:
 Close ProPresenter6.
 Make a backup Your library :)
 Back it up again :)
@@ -25,3 +25,7 @@ It reads in the Pro6 file as a sinlge XML document object, update the volume att
 and re-saves the XML back to the document.
 
 Pre-compiled Application: https://www.dropbox.com/s/nbcpzgjrkmse6qn/Pro6AudioVolumeEditor.app.zip?dl=0
+
+
+TODO: 
+Update to allow editing volumes in Audio bin playlists.
