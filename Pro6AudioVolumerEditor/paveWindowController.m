@@ -17,6 +17,10 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     [[self window] setTitle:[NSString stringWithFormat:@"Pro6 Audio Volume Editor (Version: %@)", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]];
+    
+    NSScreen *screen = [NSScreen mainScreen];
+    if (screen)
+        [[self window] setFrame:screen.visibleFrame display:TRUE];
 }
 
 @end

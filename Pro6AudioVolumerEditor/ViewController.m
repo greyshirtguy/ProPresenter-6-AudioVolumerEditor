@@ -47,7 +47,7 @@
     
     NSFileManager *fileManger = [[NSFileManager alloc] init];
     NSString *homeDir = NSHomeDirectory();
-    //TODO: make this robust!!!
+    //TODO: make this robust!!! stop using assumed paths (look it up in Pro6 Prefs)
     self.libraryFiles = [fileManger contentsOfDirectoryAtPath:[homeDir stringByAppendingString:@"/Documents/ProPresenter6"] error:nil];
     NSArray *extensions = [NSArray arrayWithObjects:@"pro6", nil];
     self.libraryFiles = [self.libraryFiles filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(pathExtension IN %@)", extensions]];
@@ -309,11 +309,10 @@ didSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths;
         
         // Play Video
         self.avPlayer = nil;
-        //TODO: protet against file does not exist...
+        //TODO: watch out when working with files that might not exist!!! make this more robust
         NSURL *fileURL = [[NSURL alloc] initWithString:selectedSlideItem.rvVideoElement.source];
         self.avPlayer = [AVPlayer playerWithURL:fileURL];
         self.avPlayer.volume = [selectedSlideItem.rvVideoElement.audioVolume floatValue];
-        //TODO: complete code to play video
         self.currentPlayingVideoElement = selectedSlideItem.rvVideoElement;
         self.avPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
         [self.avPlayer play];
@@ -330,6 +329,7 @@ didSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths;
     
     
     /*
+    // I dont like this any more
     // Find RVSlide in model and get detils to play sound at selected volume....
     NSInteger slideNumber = 0;
     for (RVSlideGrouping * group in self.rvPresentationDocument.groups) {
