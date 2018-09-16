@@ -17,13 +17,18 @@ Those slides will also have a volume slider showing the current volume of that m
 Click a slide to preview the audio.  Slide the volume slider to adjust.
 Once you are happy with changes (I guess all slides have a similar volume) - then click save button at bottom.
 
+To get a copy of the pre-compiled Application, download "Pro6AudioVolumeEditor.app.zip" from here:
+https://github.com/greyshirtguy/ProPresenter-6-AudioVolumerEditor/releases/latest
+
+
 Disclaimer:
-This is not supported by the makers or ProPresenter 6.  Use at your own risk. Make a backup copy of your library folder first!
-It should hopefully be pretty safe to use.
+This is not supported by Renewed Vision (the makers of ProPresenter 6).  
+Use at your own risk. Make a backup copy of your library folder first!
+It should be pretty safe to use.
 The logic is pretty simple and should not result in any corruption.
 It reads in the Pro6 file as a sinlge XML document object, update the volume attributes of AudioElements with new volumes
 and re-saves the XML back to the document.
-
+For more info, read the source! :)
 
 TODO: 
 Update to allow editing volumes in Audio bin playlists.
