@@ -23,3 +23,5 @@ It should hopefully be pretty safe to use.
 The logic is pretty simple and should not result in any corruption.
 It reads in the Pro6 file as a sinlge XML document object, update the volume attributes of AudioElements with new volumes
 and re-saves the XML back to the document.
+
+Pre-compiled Application: https://www.dropbox.com/s/nbcpzgjrkmse6qn/Pro6AudioVolumeEditor.app.zip?dl=0
