@@ -30,6 +30,8 @@ It reads in the Pro6 file as a sinlge XML document object, update the volume att
 and re-saves the XML back to the document.
 For more info, read the source! :)
 
-TODO: 
-Update to allow editing volumes in Audio bin playlists.
-Add playback controls (at least a progress slider to allow user to jump to any point in the audio/video file)
+TODO:
+
+- Update to allow editing volumes in Audio bin playlists.
+- Add playback controls (at least a progress slider to allow user to jump to any point in the audio/video file)
+- Checkout if volume range above 100% works for audio (as it does for video) and allow such adjustments if it works
