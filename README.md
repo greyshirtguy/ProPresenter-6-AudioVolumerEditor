@@ -9,16 +9,16 @@ To get a copy of the pre-compiled Application, download "Pro6AudioVolumeEditor.a
 https://github.com/greyshirtguy/ProPresenter-6-AudioVolumerEditor/releases/latest
 
 How to use this application:
-Close ProPresenter6.
-Make a backup Your library :)
-Back it up again :)
-Open this app - Your library should be listed on the left side 
+* Close ProPresenter6.
+* Make a backup Your library :)
+* Back it up again :)
+* Open this app - Your library should be listed on the left side 
 (Only works with default library in version 1 - Selecting library is on the TODO list)
-Scroll through the library and select your document - it should appear in the slide viewer.
-Any slide that has audio (or video) will have an symbol in the top left to indicate so.
-Those slides will also have a volume slider showing the current volume of that media item for that slide.
-Click a slide to preview the audio.  Slide the volume slider to adjust.
-Once you are happy with changes (I guess all slides have a similar volume) - then click save button at bottom.
+* Scroll through the library and select your document - it should appear in the slide viewer.
+* Any slide that has audio (or video) will have an symbol in the top left to indicate so.
+* Those slides will also have a volume slider showing the current volume of that media item for that slide.
+* Click a slide to preview the audio.  Slide the volume slider to adjust.
+* Once you are happy with changes (I guess all slides have a similar volume) - then click save button at bottom.
 
 Important Disclaimer:
 This is not supported by Renewed Vision (the makers of ProPresenter 6).  
