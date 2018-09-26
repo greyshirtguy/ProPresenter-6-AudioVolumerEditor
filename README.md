@@ -21,6 +21,7 @@ https://github.com/greyshirtguy/ProPresenter-6-AudioVolumerEditor/releases/lates
 * Once you are happy with changes (I guess all slides have a similar volume) - then click save button.
 
 **Important Disclaimer:**
+
 This is not supported by Renewed Vision (the makers of ProPresenter 6).  
 Use at your own risk. Make a backup copy of your library folder first!
 It should be pretty safe to use.
