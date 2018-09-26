@@ -13,6 +13,7 @@
 #import "RVMediaCue.h"
 #import "RVAudioCue.h"
 #import "RVVideoElement.h"
+#import "RVPlaylistNode.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) NSIndexPath *selectedItemIndexPath;
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) NSSound *soundToPlay;
 @property (strong, nonatomic) NSArray *libraryFiles;
 @property (strong, nonatomic) RVPresentationDocument *rvPresentationDocument;
+@property (strong, nonatomic) RVPlaylistNode *audioRVPlayListNode;
 @end
 
 @implementation ViewController
@@ -57,6 +59,12 @@
     self.libraryTableView.delegate = self;
     self.libraryTableView.dataSource = self;
     
+    
+    if (!self.audioRVPlayListNode)
+        self.audioRVPlayListNode = [[RVPlaylistNode alloc] init];
+    
+    NSString *audioPlaylistFilePath = [@"~/Library/Application Support/RenewedVision/ProPresenter6/Audio.pro6pl" stringByExpandingTildeInPath];
+    [self.audioRVPlayListNode loadAudioPlaylistNodesFromFile:audioPlaylistFilePath];
 }
 
 

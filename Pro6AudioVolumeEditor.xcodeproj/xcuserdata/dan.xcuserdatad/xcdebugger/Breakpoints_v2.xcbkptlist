@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pro6AudioVolumerEditor/RVPresentationDocument.m"
-            timestampString = "558618452.004943"
+            timestampString = "559653283.0412689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "186"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pro6AudioVolumerEditor/ViewController.m"
-            timestampString = "558680742.173297"
+            timestampString = "559659629.816636"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "-collectionView:itemForRepresentedObjectAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pro6AudioVolumerEditor/ViewController.m"
-            timestampString = "558680742.173389"
+            timestampString = "559659629.817764"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "385"
-            endingLineNumber = "385"
+            startingLineNumber = "393"
+            endingLineNumber = "393"
             landmarkName = "ViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pro6AudioVolumerEditor/ViewController.m"
-            timestampString = "558680742.173467"
+            timestampString = "559659629.818498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
             landmarkName = "-collectionView:didSelectItemsAtIndexPaths:"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,12 +74,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pro6AudioVolumerEditor/RVPresentationDocument.m"
-            timestampString = "558618452.005676"
+            timestampString = "559653283.0416729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
             endingLineNumber = "122"
             landmarkName = "-parser:didStartElement:namespaceURI:qualifiedName:attributes:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pro6AudioVolumerEditor/ViewController.m"
+            timestampString = "559659629.818953"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pro6AudioVolumerEditor/ViewController.m"
+            timestampString = "559659629.8194"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-button_clicked:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

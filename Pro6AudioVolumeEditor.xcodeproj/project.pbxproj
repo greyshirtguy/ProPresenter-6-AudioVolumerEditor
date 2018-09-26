@@ -23,9 +23,9 @@
 		3771F530214903F10090AADA /* RVImageElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F52E214903F00090AADA /* RVImageElement.m */; };
 		3771F531214903F10090AADA /* RVVideoElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F52F214903F00090AADA /* RVVideoElement.m */; };
 		37B9F416214FD3F70065A6FC /* save-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 37B9F415214FD3F70065A6FC /* save-icon.png */; };
-		37B9F418214FD7420065A6FC /* save-icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 37B9F417214FD7420065A6FC /* save-icon2.png */; };
 		37F35440214CC0FF007FBCAC /* Pro6VolumeEditor.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F3543F214CC0FF007FBCAC /* Pro6VolumeEditor.png */; };
 		37F35446214CC866007FBCAC /* paveWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F35445214CC866007FBCAC /* paveWindowController.m */; };
+		37F6ED01215B988000616086 /* RVPlaylistNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F6ED00215B988000616086 /* RVPlaylistNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,10 +59,11 @@
 		3771F52E214903F00090AADA /* RVImageElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVImageElement.m; sourceTree = "<group>"; };
 		3771F52F214903F00090AADA /* RVVideoElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVVideoElement.m; sourceTree = "<group>"; };
 		37B9F415214FD3F70065A6FC /* save-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save-icon.png"; sourceTree = "<group>"; };
-		37B9F417214FD7420065A6FC /* save-icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save-icon2.png"; sourceTree = "<group>"; };
 		37F3543F214CC0FF007FBCAC /* Pro6VolumeEditor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pro6VolumeEditor.png; sourceTree = "<group>"; };
 		37F35444214CC866007FBCAC /* paveWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = paveWindowController.h; sourceTree = "<group>"; };
 		37F35445214CC866007FBCAC /* paveWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = paveWindowController.m; sourceTree = "<group>"; };
+		37F6ECFF215B988000616086 /* RVPlaylistNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RVPlaylistNode.h; sourceTree = "<group>"; };
+		37F6ED00215B988000616086 /* RVPlaylistNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RVPlaylistNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +97,8 @@
 		371EE9952147F08D004ACFA0 /* Pro6AudioVolumerEditor */ = {
 			isa = PBXGroup;
 			children = (
+				37F6ECFF215B988000616086 /* RVPlaylistNode.h */,
+				37F6ED00215B988000616086 /* RVPlaylistNode.m */,
 				3771F5262148FAFE0090AADA /* RVAudioCue.h */,
 				3771F5272148FAFE0090AADA /* RVAudioCue.m */,
 				3771F5292148FC9B0090AADA /* RVAudioElement.h */,
@@ -123,7 +126,6 @@
 				371EE99C2147F08F004ACFA0 /* Assets.xcassets */,
 				37F3543F214CC0FF007FBCAC /* Pro6VolumeEditor.png */,
 				37B9F415214FD3F70065A6FC /* save-icon.png */,
-				37B9F417214FD7420065A6FC /* save-icon2.png */,
 				371EE99E2147F08F004ACFA0 /* Main.storyboard */,
 				371EE9A12147F08F004ACFA0 /* Info.plist */,
 				371EE9A22147F08F004ACFA0 /* main.m */,
@@ -189,7 +191,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37B9F418214FD7420065A6FC /* save-icon2.png in Resources */,
 				3771F512214870D70090AADA /* RVSlideViewItem.xib in Resources */,
 				37B9F416214FD3F70065A6FC /* save-icon.png in Resources */,
 				37F35440214CC0FF007FBCAC /* Pro6VolumeEditor.png in Resources */,
@@ -206,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37F35446214CC866007FBCAC /* paveWindowController.m in Sources */,
+				37F6ED01215B988000616086 /* RVPlaylistNode.m in Sources */,
 				3771F5282148FAFE0090AADA /* RVAudioCue.m in Sources */,
 				3771F51F2148F6AA0090AADA /* RVDisplaySlide.m in Sources */,
 				3771F51E2148F6AA0090AADA /* RVMediaCue.m in Sources */,
