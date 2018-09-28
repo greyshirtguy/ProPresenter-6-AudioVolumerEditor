@@ -14,6 +14,7 @@
 #import "RVAudioCue.h"
 #import "RVVideoElement.h"
 #import "RVPlaylistNode.h"
+#import "PlayListTableCellView.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) NSIndexPath *selectedItemIndexPath;
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) NSArray *libraryFiles;
 @property (strong, nonatomic) RVPresentationDocument *rvPresentationDocument;
 @property (strong, nonatomic) RVPlaylistNode *audioRVPlayListsRootNode;
+@property (weak, nonatomic) RVPlaylistNode *currentSelectedRVPlaylistNode;
 @end
 
 @implementation ViewController
@@ -58,6 +60,9 @@
     
     self.libraryTableView.delegate = self;
     self.libraryTableView.dataSource = self;
+    
+    self.selectedPlaylistTableView.delegate = self;
+    self.selectedPlaylistTableView.dataSource = self;
     
     self.playlistsOutlineView.delegate = self;
     self.playlistsOutlineView.dataSource = self;
@@ -395,36 +400,69 @@ didSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths;
 
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    NSTableCellView *libDocTableViewCell = [tableView makeViewWithIdentifier:@"LibraryDocTableViewCell" owner:self];
-    libDocTableViewCell.textField.stringValue = self.libraryFiles[row];
-    return libDocTableViewCell;
+    if (tableView == self.libraryTableView)
+    {
+        // Library TableView
+        NSTableCellView *libDocTableViewCell = [tableView makeViewWithIdentifier:@"LibraryDocTableCellView" owner:self];
+        libDocTableViewCell.textField.stringValue = self.libraryFiles[row];
+        return libDocTableViewCell;
+    } else {
+        // selectedPlaylistTableView
+        PlayListTableCellView *playListTableViewCell = [tableView makeViewWithIdentifier:@"PlayListTableCellView" owner:self];
+        RVAudioCue *rvAudioCue = self.currentSelectedRVPlaylistNode.children[row]; // TODO: should really confirm expected type first!
+        playListTableViewCell.textField.stringValue = rvAudioCue.displayName;
+        playListTableViewCell.volumeSlider.enabled = (self.selectedPlaylistTableView.selectedRow == row);
+        return playListTableViewCell;
+    }
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    if (self.libraryFiles) {
-        return self.libraryFiles.count;
+    if (tableView == self.libraryTableView)
+    {
+        // Library TableView
+        if (self.libraryFiles)
+            return self.libraryFiles.count;
+        else
+            return 0;
+        
     } else {
-        return 0;
+        // selectedPlaylistTableView
+        if ([self.currentSelectedRVPlaylistNode.type isEqualToString:@"3"])
+            return self.currentSelectedRVPlaylistNode.children.count;
+        else
+            return 0;
     }
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    NSLog(@"%ld",(long)self.libraryTableView.selectedRow);
-    self.saveButton.enabled = NO;
-    NSString *homeDir = NSHomeDirectory();
-    NSString *pro6DocsDir = [homeDir stringByAppendingPathComponent:@"Documents/ProPresenter6"];
-    NSString *docPathName = [pro6DocsDir stringByAppendingPathComponent:self.libraryFiles[self.libraryTableView.selectedRow]];
-    self.rvPresentationDocument = [[RVPresentationDocument alloc] init];
-    [self.rvPresentationDocument loadFromFile:docPathName];
-    self.selectedItemIndexPath = nil;  // protect against crash!
-    [self.slidesCollectionView reloadData];
-    
-    self.currentPlayingAudioElement = nil;
-    [self.soundToPlay stop];
-    self.currentPlayingVideoElement = nil;
-    [self.avPlayer  pause];
-}
+    if (notification.object == self.libraryTableView)
+    {
+        // Library TableView
+        NSLog(@"%ld",(long)self.libraryTableView.selectedRow);
+        self.saveButton.enabled = NO;
+        NSString *homeDir = NSHomeDirectory();
+        NSString *pro6DocsDir = [homeDir stringByAppendingPathComponent:@"Documents/ProPresenter6"];
+        NSString *docPathName = [pro6DocsDir stringByAppendingPathComponent:self.libraryFiles[self.libraryTableView.selectedRow]];
+        self.rvPresentationDocument = [[RVPresentationDocument alloc] init];
+        [self.rvPresentationDocument loadFromFile:docPathName];
+        self.selectedItemIndexPath = nil;  // protect against crash!
+        [self.slidesCollectionView reloadData];
+        
+        self.currentPlayingAudioElement = nil;
+        [self.soundToPlay stop];
+        self.currentPlayingVideoElement = nil;
+        [self.avPlayer  pause];
+    } else {
+        // selectedPlaylistTableView
+        
+        // Keep volume sliders disabled until row is selected....
+        [self.selectedPlaylistTableView enumerateAvailableRowViewsUsingBlock:^(NSTableRowView *rowView, NSInteger row) {
+            PlayListTableCellView *playListTableViewCell =  [self.selectedPlaylistTableView viewAtColumn:0 row:row makeIfNecessary:NO];
+            playListTableViewCell.volumeSlider.enabled = (row==self.selectedPlaylistTableView.selectedRow);
+        }];
 
+    }
+}
 
 -(id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
     if (item == nil) {
@@ -449,6 +487,12 @@ didSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths;
     }
 }
 
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
+    self.currentSelectedRVPlaylistNode = [self.playlistsOutlineView itemAtRow:[self.playlistsOutlineView selectedRow]];
+    [self.selectedPlaylistTableView reloadData];
+}
+
+
 /*
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
     return @"test";
@@ -457,6 +501,12 @@ didSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths;
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
     NSTableCellView *audioTableCellView = [outlineView makeViewWithIdentifier:@"AudioTableCellView" owner:self];
     audioTableCellView.textField.stringValue = ((RVPlaylistNode *)item).displayName;
+    
+    if ([((RVPlaylistNode *)item).type isEqualToString:@"2"])
+        audioTableCellView.imageView.image = [NSImage imageNamed:@"playlistfolder"];
+    else
+        audioTableCellView.imageView.image = [NSImage imageNamed:@"playlist"];
+    
     return audioTableCellView;
 }
 

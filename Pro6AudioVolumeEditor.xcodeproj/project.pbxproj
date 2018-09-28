@@ -12,6 +12,10 @@
 		371EE99D2147F08F004ACFA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 371EE99C2147F08F004ACFA0 /* Assets.xcassets */; };
 		371EE9A02147F08F004ACFA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 371EE99E2147F08F004ACFA0 /* Main.storyboard */; };
 		371EE9A32147F08F004ACFA0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 371EE9A22147F08F004ACFA0 /* main.m */; };
+		374C1456215DF04D00CD18BB /* playlist.png in Resources */ = {isa = PBXBuildFile; fileRef = 374C1454215DF04C00CD18BB /* playlist.png */; };
+		374C1457215DF04D00CD18BB /* playlistfolder.png in Resources */ = {isa = PBXBuildFile; fileRef = 374C1455215DF04C00CD18BB /* playlistfolder.png */; };
+		374C1459215E02A700CD18BB /* TBAudio.png in Resources */ = {isa = PBXBuildFile; fileRef = 374C1458215E02A700CD18BB /* TBAudio.png */; };
+		374C145C215E078C00CD18BB /* PlayListTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 374C145B215E078C00CD18BB /* PlayListTableCellView.m */; };
 		3771F512214870D70090AADA /* RVSlideViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3771F510214870D70090AADA /* RVSlideViewItem.xib */; };
 		3771F51D2148F6AA0090AADA /* RVPresentationDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F5182148F6A90090AADA /* RVPresentationDocument.m */; };
 		3771F51E2148F6AA0090AADA /* RVMediaCue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771F51A2148F6AA0090AADA /* RVMediaCue.m */; };
@@ -39,6 +43,11 @@
 		371EE9A12147F08F004ACFA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		371EE9A22147F08F004ACFA0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		371EE9A42147F08F004ACFA0 /* Pro6AudioVolumerEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pro6AudioVolumerEditor.entitlements; sourceTree = "<group>"; };
+		374C1454215DF04C00CD18BB /* playlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playlist.png; sourceTree = "<group>"; };
+		374C1455215DF04C00CD18BB /* playlistfolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playlistfolder.png; sourceTree = "<group>"; };
+		374C1458215E02A700CD18BB /* TBAudio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TBAudio.png; sourceTree = "<group>"; };
+		374C145A215E078C00CD18BB /* PlayListTableCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayListTableCellView.h; sourceTree = "<group>"; };
+		374C145B215E078C00CD18BB /* PlayListTableCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayListTableCellView.m; sourceTree = "<group>"; };
 		3771F510214870D70090AADA /* RVSlideViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RVSlideViewItem.xib; sourceTree = "<group>"; };
 		3771F5152148F6A90090AADA /* RVMediaCue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RVMediaCue.h; sourceTree = "<group>"; };
 		3771F5162148F6A90090AADA /* RVPresentationDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RVPresentationDocument.h; sourceTree = "<group>"; };
@@ -80,7 +89,6 @@
 		371EE98A2147F08C004ACFA0 = {
 			isa = PBXGroup;
 			children = (
-				3771F510214870D70090AADA /* RVSlideViewItem.xib */,
 				371EE9952147F08D004ACFA0 /* Pro6AudioVolumerEditor */,
 				371EE9942147F08D004ACFA0 /* Products */,
 			);
@@ -126,7 +134,13 @@
 				371EE99C2147F08F004ACFA0 /* Assets.xcassets */,
 				37F3543F214CC0FF007FBCAC /* Pro6VolumeEditor.png */,
 				37B9F415214FD3F70065A6FC /* save-icon.png */,
+				374C1458215E02A700CD18BB /* TBAudio.png */,
+				374C1454215DF04C00CD18BB /* playlist.png */,
+				374C1455215DF04C00CD18BB /* playlistfolder.png */,
 				371EE99E2147F08F004ACFA0 /* Main.storyboard */,
+				3771F510214870D70090AADA /* RVSlideViewItem.xib */,
+				374C145A215E078C00CD18BB /* PlayListTableCellView.h */,
+				374C145B215E078C00CD18BB /* PlayListTableCellView.m */,
 				371EE9A12147F08F004ACFA0 /* Info.plist */,
 				371EE9A22147F08F004ACFA0 /* main.m */,
 				371EE9A42147F08F004ACFA0 /* Pro6AudioVolumerEditor.entitlements */,
@@ -192,9 +206,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3771F512214870D70090AADA /* RVSlideViewItem.xib in Resources */,
+				374C1456215DF04D00CD18BB /* playlist.png in Resources */,
 				37B9F416214FD3F70065A6FC /* save-icon.png in Resources */,
 				37F35440214CC0FF007FBCAC /* Pro6VolumeEditor.png in Resources */,
+				374C1457215DF04D00CD18BB /* playlistfolder.png in Resources */,
 				371EE99D2147F08F004ACFA0 /* Assets.xcassets in Resources */,
+				374C1459215E02A700CD18BB /* TBAudio.png in Resources */,
 				371EE9A02147F08F004ACFA0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +237,7 @@
 				371EE9982147F08D004ACFA0 /* AppDelegate.m in Sources */,
 				3771F5202148F6AA0090AADA /* RVSlideGrouping.m in Sources */,
 				3771F5232148F7A00090AADA /* RVSlideViewItem.m in Sources */,
+				374C145C215E078C00CD18BB /* PlayListTableCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

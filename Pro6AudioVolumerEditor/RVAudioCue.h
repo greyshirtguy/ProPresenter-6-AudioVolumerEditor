@@ -12,4 +12,5 @@
 @interface RVAudioCue : NSObject
 @property (strong, nonatomic) RVAudioElement *rvAudioElement;
 @property (strong, nonatomic) NSString *UUID;
+@property (strong, nonatomic) NSString *displayName;
 @end

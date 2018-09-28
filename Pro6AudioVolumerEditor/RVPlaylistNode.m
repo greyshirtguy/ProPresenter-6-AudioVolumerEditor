@@ -75,6 +75,7 @@ extern RVAudioElement *currentRVAudioElementBeingImported;
         //NSLog(@"Got RVAudioCue %@", [attributeDict objectForKey:@"displayName"]);
         currentRVAudioCueBeingImported = [[RVAudioCue alloc] init];
         currentRVAudioCueBeingImported.UUID = [attributeDict objectForKey:@"UUID"];
+        currentRVAudioCueBeingImported.displayName = [attributeDict objectForKey:@"displayName"];
     } else if ([elementName isEqualToString:@"RVAudioElement"]){
         currentRVAudioElementBeingImported = [[RVAudioElement alloc] init];
         currentRVAudioElementBeingImported.source = [attributeDict objectForKey:@"source"];
