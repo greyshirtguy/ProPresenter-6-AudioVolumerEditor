@@ -19,6 +19,13 @@ NSMutableArray *currentRVPlaylistNodesBeingimported; // This is a simple stack u
 extern RVAudioCue *currentRVAudioCueBeingImported; // I'm sure I'm doing something wrong-ish here....(needed extern to avoid duplicate symbols when linking)
 extern RVAudioElement *currentRVAudioElementBeingImported;
 
+- (NSString *) type {
+    // New RVPlaylistNode default to type 0 (Root Node)
+    if (!_type)
+        _type = @"0";
+    return _type;
+}
+
 - (NSMutableArray *) children {
     if (!_children)
         _children = [[NSMutableArray alloc] init];

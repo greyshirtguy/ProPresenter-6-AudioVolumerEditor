@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSSound *soundToPlay;
 @property (strong, nonatomic) NSArray *libraryFiles;
 @property (strong, nonatomic) RVPresentationDocument *rvPresentationDocument;
-@property (strong, nonatomic) RVPlaylistNode *audioRVPlayListNode;
+@property (strong, nonatomic) RVPlaylistNode *audioRVPlayListsRootNode;
 @end
 
 @implementation ViewController
@@ -59,12 +59,15 @@
     self.libraryTableView.delegate = self;
     self.libraryTableView.dataSource = self;
     
+    self.playlistsOutlineView.delegate = self;
+    self.playlistsOutlineView.dataSource = self;
     
-    if (!self.audioRVPlayListNode)
-        self.audioRVPlayListNode = [[RVPlaylistNode alloc] init];
+    if (!self.audioRVPlayListsRootNode)
+        self.audioRVPlayListsRootNode = [[RVPlaylistNode alloc] init];
     
     NSString *audioPlaylistFilePath = [@"~/Library/Application Support/RenewedVision/ProPresenter6/Audio.pro6pl" stringByExpandingTildeInPath];
-    [self.audioRVPlayListNode loadAudioPlaylistNodesFromFile:audioPlaylistFilePath];
+    [self.audioRVPlayListsRootNode loadAudioPlaylistNodesFromFile:audioPlaylistFilePath];
+    [self.playlistsOutlineView reloadData];
 }
 
 
@@ -403,9 +406,7 @@ didSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths;
     } else {
         return 0;
     }
-  
 }
-
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSLog(@"%ld",(long)self.libraryTableView.selectedRow);
@@ -423,4 +424,40 @@ didSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths;
     self.currentPlayingVideoElement = nil;
     [self.avPlayer  pause];
 }
+
+
+-(id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
+    if (item == nil) {
+        RVPlaylistNode *rootNode = [self.audioRVPlayListsRootNode.children firstObject];
+        return [rootNode.children objectAtIndex:index];
+    } else {
+        return [((RVPlaylistNode *)item).children objectAtIndex:index];
+    }
+}
+
+-(BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
+    return [((RVPlaylistNode *)item).type isEqualToString:@"2"];
+}
+
+- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
+    if (item == nil) {
+        // Root node, return count of root node's childern
+        RVPlaylistNode *rootNode = [self.audioRVPlayListsRootNode.children firstObject];
+        return rootNode.children.count;
+    } else {
+        return ((RVPlaylistNode *)item).children.count;
+    }
+}
+
+/*
+- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
+    return @"test";
+} */
+
+- (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+    NSTableCellView *audioTableCellView = [outlineView makeViewWithIdentifier:@"AudioTableCellView" owner:self];
+    audioTableCellView.textField.stringValue = ((RVPlaylistNode *)item).displayName;
+    return audioTableCellView;
+}
+
 @end
