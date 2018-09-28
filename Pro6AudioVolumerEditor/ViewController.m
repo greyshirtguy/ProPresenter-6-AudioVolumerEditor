@@ -34,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // check for Pro6 running - Warn user and quit if found...
     if ([NSRunningApplication runningApplicationsWithBundleIdentifier:@"com.renewedvision.ProPresenter6"].count > 0) {
         NSAlert *alert = [[NSAlert alloc] init];
         alert.messageText = @"ProPresenter 6 is running!\n\nPlease Quit ProPrensenter 6\nbefore using this editor.";
@@ -42,13 +43,11 @@
         [NSApp terminate:self];
     }
     
-    
-    
+    // Prepare CollectionView custom cell view.
     NSNib *rvslideviewnib = [[NSNib alloc] initWithNibNamed:@"RVSlideViewItem" bundle:nil];
     [self.slidesCollectionView registerNib:rvslideviewnib forItemWithIdentifier:@"RVSlideViewItem"];
-    self.slidesCollectionView.delegate = self;
-    self.slidesCollectionView.dataSource = self;
     
+    // Setup model to hold list of library files...
     NSFileManager *fileManger = [[NSFileManager alloc] init];
     NSString *homeDir = NSHomeDirectory();
     //TODO: make this robust!!! stop using assumed paths (look it up in Pro6 Prefs)
@@ -57,6 +56,10 @@
     self.libraryFiles = [self.libraryFiles filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(pathExtension IN %@)", extensions]];
     self.libraryFiles = [self.libraryFiles sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     NSLog(@"%lu files in library",(unsigned long)self.libraryFiles.count);
+    
+    // Setup control delegates...
+    self.slidesCollectionView.delegate = self;
+    self.slidesCollectionView.dataSource = self;
     
     self.libraryTableView.delegate = self;
     self.libraryTableView.dataSource = self;
@@ -67,9 +70,11 @@
     self.playlistsOutlineView.delegate = self;
     self.playlistsOutlineView.dataSource = self;
     
+    // Prepare model to hold Audio Playlists
     if (!self.audioRVPlayListsRootNode)
         self.audioRVPlayListsRootNode = [[RVPlaylistNode alloc] init];
     
+    // Load up Audio PlayLists...
     NSString *audioPlaylistFilePath = [@"~/Library/Application Support/RenewedVision/ProPresenter6/Audio.pro6pl" stringByExpandingTildeInPath];
     [self.audioRVPlayListsRootNode loadAudioPlaylistNodesFromFile:audioPlaylistFilePath];
     [self.playlistsOutlineView reloadData];
@@ -81,7 +86,9 @@
 
     // Update the view, if already loaded.
 }
-- (IBAction)button_clicked:(NSButton *)sender {
+
+
+- (IBAction)doc_save_button_clicked:(NSButton *)sender {
     NSError *error;
     NSString *homeDir = NSHomeDirectory();
     NSString *pro6DocsDir = [homeDir stringByAppendingPathComponent:@"Documents/ProPresenter6"];
@@ -103,7 +110,7 @@
 
                     }
                     if (rvMediaCue.rvVideoElement) {
-                        // Get matching XMlElement
+                        // Get matching XMlElement and update attibure for volume.
                         NSArray *videoCueElements = [root nodesForXPath:[NSString stringWithFormat:@"//RVMediaCue[@UUID='%@']",rvMediaCue.UUID] error:nil];
                         NSXMLNode *videoCueNode = [videoCueElements lastObject];
                         if ([videoCueNode kind] == NSXMLElementKind) {
@@ -121,7 +128,7 @@
                     // Get rvAudioCue from model (might be updated)
                     RVAudioCue *rvAudioCue = (RVAudioCue *)cue;
                     
-                    // Get matching XMlElement
+                    // Get matching XMlElement and update attribute for volume.
                     NSArray *audioCueElements = [root nodesForXPath:[NSString stringWithFormat:@"//RVAudioCue[@UUID='%@']",rvAudioCue.UUID] error:nil];
                     NSXMLNode *audioCueNode = [audioCueElements lastObject];
                     if ([audioCueNode kind] == NSXMLElementKind) {
@@ -136,28 +143,93 @@
             }
         }
         
+        // Save File
         NSData *data = [rvPresentationDoc XMLData];
         [data writeToURL:fileURL atomically:YES];
-        self.saveButton.enabled = NO;
+        
+        // Disable Save button
+        self.docSaveButton.enabled = NO;
     }
+}
 
+- (IBAction)audioPlaylistButtonClicked:(NSButton *)sender {
+    NSError *error;
+    NSString *audioPlaylistFilePath = [@"~/Library/Application Support/RenewedVision/ProPresenter6/Audio.pro6pl" stringByExpandingTildeInPath];
+    NSURL *fileURL = [NSURL fileURLWithPath:audioPlaylistFilePath];
+    NSXMLDocument *rvAudioPlayListsXMLDoc = [[NSXMLDocument alloc] initWithContentsOfURL:fileURL options:NSXMLDocumentTidyXML error:&error];
     
+    // Go right through model (which may be updated with new volumes) and update xml file with volumes
+    for (RVPlaylistNode *rvPlayListNode in self.audioRVPlayListsRootNode.children) {
+        [self UpdateAudioPlayListsXMLDoc:rvAudioPlayListsXMLDoc forChildrenOfRVAudiaoPlaylistNode:rvPlayListNode];
+    }
     
+    // Save File
+    NSData *data = [rvAudioPlayListsXMLDoc XMLData];
+    [data writeToURL:fileURL atomically:YES];
     
+    // Disable Save button
+    self.audioPlayListSaveButton.enabled = NO;
+}
+
+-(void)UpdateAudioPlayListsXMLDoc:(NSXMLDocument *)rvAudioPlayListsXMLDoc forChildrenOfRVAudiaoPlaylistNode:(RVPlaylistNode *)rvPlayListNode {
+    if (![rvPlayListNode.type isEqualToString:@"3"] && rvPlayListNode.children.count > 0) {
+        for (RVPlaylistNode *childRVPlayListNode in rvPlayListNode.children) {
+            [self UpdateAudioPlayListsXMLDoc:rvAudioPlayListsXMLDoc forChildrenOfRVAudiaoPlaylistNode:childRVPlayListNode];
+        }
+    }
+    
+    // For each RVAudioCue, find matching XMLElement and update volume
+    // TODO: deal with multiple Audio cues with same UUID!!!!
+    NSXMLElement *root = [rvAudioPlayListsXMLDoc rootElement];
+    if ([rvPlayListNode.type isEqualToString:@"3"] && rvPlayListNode.children.count > 0)
+    {
+        for (RVAudioCue *rvAudioCue in rvPlayListNode.children) {
+            // Get matching XMlElement and update attribute for volume.
+            NSArray *audioCueElements = [root nodesForXPath:[NSString stringWithFormat:@"//RVAudioCue[@UUID='%@']",rvAudioCue.UUID] error:nil];
+            for (NSXMLNode *audioCueNode in audioCueElements) {
+                if ([audioCueNode kind] == NSXMLElementKind) {
+                    NSXMLElement *audioCueElement = (NSXMLElement *)audioCueNode;
+                    NSXMLElement *audioElement = [[audioCueElement elementsForName:@"RVAudioElement"] objectAtIndex:0];
+                    NSLog(@"%@",audioElement);
+                    NSLog(@"%@",rvAudioCue.rvAudioElement.volume);
+                    [audioElement addAttribute:[NSXMLNode attributeWithName:@"volume" stringValue:rvAudioCue.rvAudioElement.volume]];
+                    NSLog(@"%@",audioElement);
+                }
+            }
+        }
+    }
+    
+    //NSLog(@"Saving Node: %@", rvPlayListNode.displayName);
 }
 
 -(void)userChangedVolumeOfVideoElement:(RVVideoElement *)rvVideoElement toVolume:(float)volume {
-    NSLog(@"VC knows video volume was changed");
+    NSLog(@"VC knows Slide video volume was changed");
     self.avPlayer.volume = volume;
-    self.saveButton.enabled = YES;
+    self.docSaveButton.enabled = YES;
 }
 
 -(void)userChangedVolumeOfAudioElement:(RVAudioElement *)rvAudioElement toVolume:(float)volume {
-    NSLog(@"VC knows audio volume was changed");
-    self.saveButton.enabled = YES;
+    NSLog(@"VC knows Slide audio volume was changed");
+    self.docSaveButton.enabled = YES;
     if (self.soundToPlay && self.currentPlayingAudioElement == rvAudioElement)
         self.soundToPlay.volume = volume;
 }
+
+- (void)userChangedVolumeOfPlayListAudioElement:(RVAudioElement *)rvAudioElement toVolume:(float)volume {
+    NSLog(@"VC knows PlayList audio volume was changed");
+    self.audioPlayListSaveButton.enabled = YES;
+    if (self.soundToPlay && self.currentPlayingAudioElement == rvAudioElement)
+        self.soundToPlay.volume = volume;
+}
+
+/*
+ - (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
+ 
+ }
+ */
+
+
+#pragma mark CollectionView Methods
 
 - (nonnull NSCollectionViewItem *)collectionView:(nonnull NSCollectionView *)collectionView itemForRepresentedObjectAtIndexPath:(nonnull NSIndexPath *)indexPath {
     RVSlideViewItem *rvSlideViewItem = [self.slidesCollectionView makeItemWithIdentifier:@"RVSlideViewItem" forIndexPath:indexPath];
@@ -253,10 +325,6 @@
     }
     
     return slideCount;
-}
-
-- (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
-    
 }
 
 
@@ -393,11 +461,12 @@ didSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths;
 
 }
 
+#pragma mark TableView methods
+
 /*
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
     return [[NSTableRowView alloc] init];
 } */
-
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     if (tableView == self.libraryTableView)
@@ -411,7 +480,10 @@ didSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths;
         PlayListTableCellView *playListTableViewCell = [tableView makeViewWithIdentifier:@"PlayListTableCellView" owner:self];
         RVAudioCue *rvAudioCue = self.currentSelectedRVPlaylistNode.children[row]; // TODO: should really confirm expected type first!
         playListTableViewCell.textField.stringValue = rvAudioCue.displayName;
+        playListTableViewCell.rvAudioElement = rvAudioCue.rvAudioElement;
         playListTableViewCell.volumeSlider.enabled = (self.selectedPlaylistTableView.selectedRow == row);
+        playListTableViewCell.volumeSlider.floatValue = [playListTableViewCell.rvAudioElement.volume floatValue];
+        playListTableViewCell.playListTableCellViewDelegate = self;
         return playListTableViewCell;
     }
 }
@@ -434,12 +506,14 @@ didSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths;
     }
 }
 
+
+
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     if (notification.object == self.libraryTableView)
     {
         // Library TableView
         NSLog(@"%ld",(long)self.libraryTableView.selectedRow);
-        self.saveButton.enabled = NO;
+        self.docSaveButton.enabled = NO;
         NSString *homeDir = NSHomeDirectory();
         NSString *pro6DocsDir = [homeDir stringByAppendingPathComponent:@"Documents/ProPresenter6"];
         NSString *docPathName = [pro6DocsDir stringByAppendingPathComponent:self.libraryFiles[self.libraryTableView.selectedRow]];
@@ -454,15 +528,46 @@ didSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths;
         [self.avPlayer  pause];
     } else {
         // selectedPlaylistTableView
-        
+
         // Keep volume sliders disabled until row is selected....
         [self.selectedPlaylistTableView enumerateAvailableRowViewsUsingBlock:^(NSTableRowView *rowView, NSInteger row) {
             PlayListTableCellView *playListTableViewCell =  [self.selectedPlaylistTableView viewAtColumn:0 row:row makeIfNecessary:NO];
             playListTableViewCell.volumeSlider.enabled = (row==self.selectedPlaylistTableView.selectedRow);
         }];
-
+        
+        // Kick off audio for selected item
+        // Stop any already playing Audio
+        if (self.currentPlayingAudioElement)
+        {
+            self.currentPlayingAudioElement = nil;
+            [self.soundToPlay stop];
+        }
+        
+        // STop any video playing
+        if (self.currentPlayingVideoElement)
+        {
+            [self.avPlayer pause];
+            self.currentPlayingVideoElement = nil;
+        }
+        
+        // Play Audio
+        RVAudioCue *rvAudioCue = self.currentSelectedRVPlaylistNode.children[self.selectedPlaylistTableView.selectedRow];
+        RVAudioElement *rvAudioElement = rvAudioCue.rvAudioElement;
+        NSURL *fileURL = [[NSURL alloc] initWithString:rvAudioElement.source];
+        if(self.soundToPlay)
+        {
+            self.soundToPlay = nil;
+        }
+        self.soundToPlay = [[NSSound alloc] initWithContentsOfURL:fileURL byReference:NO];
+        self.soundToPlay.volume = [rvAudioElement.volume floatValue];
+        self.soundToPlay.loops = YES;
+        self.currentPlayingAudioElement = rvAudioElement;
+        [self.soundToPlay play];
+        
     }
 }
+
+#pragma mark OutlineView methods
 
 -(id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
     if (item == nil) {
@@ -488,15 +593,24 @@ didSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths;
 }
 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification {
+    // Stop any already playing Audio
+    if (self.currentPlayingAudioElement)
+    {
+        self.currentPlayingAudioElement = nil;
+        [self.soundToPlay stop];
+    }
+    
+    // STop any video playing
+    if (self.currentPlayingVideoElement)
+    {
+        [self.avPlayer pause];
+        self.currentPlayingVideoElement = nil;
+    }
+    
+    
     self.currentSelectedRVPlaylistNode = [self.playlistsOutlineView itemAtRow:[self.playlistsOutlineView selectedRow]];
     [self.selectedPlaylistTableView reloadData];
 }
-
-
-/*
-- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
-    return @"test";
-} */
 
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
     NSTableCellView *audioTableCellView = [outlineView makeViewWithIdentifier:@"AudioTableCellView" owner:self];

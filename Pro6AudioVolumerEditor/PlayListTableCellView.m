@@ -15,5 +15,13 @@
     
     // Drawing code here.
 }
+- (IBAction)playlistItemVolumeSliderChanged:(NSSlider *)sender {
+    // Update model
+    self.rvAudioElement.volume = sender.stringValue;
+    
+    // Let viewcontroller know volume was changed
+    if (self.playListTableCellViewDelegate)
+        [self.playListTableCellViewDelegate userChangedVolumeOfPlayListAudioElement:self.rvAudioElement toVolume:sender.floatValue];
+}
 
 @end

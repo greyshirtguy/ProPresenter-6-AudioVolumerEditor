@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pro6AudioVolumerEditor/ViewController.m"
-            timestampString = "559812491.970998"
+            timestampString = "559827350.497538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "-collectionView:itemForRepresentedObjectAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pro6AudioVolumerEditor/ViewController.m"
-            timestampString = "559812491.971096"
+            timestampString = "559827350.4982409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401"
+            startingLineNumber = "469"
+            endingLineNumber = "469"
             landmarkName = "ViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pro6AudioVolumerEditor/ViewController.m"
-            timestampString = "559812491.971179"
+            timestampString = "559827350.498803"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
             landmarkName = "-collectionView:didSelectItemsAtIndexPaths:"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pro6AudioVolumerEditor/ViewController.m"
-            timestampString = "559812491.9712991"
+            timestampString = "559827350.499383"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "-button_clicked:"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-doc_save_button_clicked:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -106,13 +106,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pro6AudioVolumerEditor/ViewController.m"
-            timestampString = "559812491.971404"
+            timestampString = "559827350.499918"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457"
+            startingLineNumber = "530"
+            endingLineNumber = "530"
             landmarkName = "-tableViewSelectionDidChange:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pro6AudioVolumerEditor/ViewController.m"
+            timestampString = "559827350.500381"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "-audioPlaylistButtonClicked:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ViewController audioPlaylistButtonClicked:]"
+                  moduleName = "Pro6AudioVolumeEditor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dan/Dropbox/Dan/Programming/Pro6AudioVolumerEditor/Pro6AudioVolumerEditor/ViewController.m"
+                  timestampString = "559827266.223911"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "298">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ViewController audioPlaylistButtonClicked:]"
+                  moduleName = "Pro6AudioVolumeEditor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dan/Dropbox/Dan/Programming/Pro6AudioVolumerEditor/Pro6AudioVolumerEditor/ViewController.m"
+                  timestampString = "559827266.2283469"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "306">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
