@@ -129,6 +129,7 @@
                     RVAudioCue *rvAudioCue = (RVAudioCue *)cue;
                     
                     // Get matching XMlElement and update attribute for volume.
+                    //TODO: it seems audiocue UUID is not duplicated when same audio is cue'd on multiple slides - consider including parent UUID anyway (just in case future breaks)???
                     NSArray *audioCueElements = [root nodesForXPath:[NSString stringWithFormat:@"//RVAudioCue[@UUID='%@']",rvAudioCue.UUID] error:nil];
                     NSXMLNode *audioCueNode = [audioCueElements lastObject];
                     if ([audioCueNode kind] == NSXMLElementKind) {
@@ -179,13 +180,13 @@
     }
     
     // For each RVAudioCue, find matching XMLElement and update volume
-    // TODO: deal with multiple Audio cues with same UUID!!!!
+    // To deal with multiple Audio cues with same UUID... I have included RVPlaylistNode UUID so that can be included in the XPath search to help uniquly identifiy the AudioCue
     NSXMLElement *root = [rvAudioPlayListsXMLDoc rootElement];
     if ([rvPlayListNode.type isEqualToString:@"3"] && rvPlayListNode.children.count > 0)
     {
         for (RVAudioCue *rvAudioCue in rvPlayListNode.children) {
             // Get matching XMlElement and update attribute for volume.
-            NSArray *audioCueElements = [root nodesForXPath:[NSString stringWithFormat:@"//RVAudioCue[@UUID='%@']",rvAudioCue.UUID] error:nil];
+            NSArray *audioCueElements = [root nodesForXPath:[NSString stringWithFormat:@"//RVPlaylistNode[@UUID='%@']//RVAudioCue[@UUID='%@']", rvPlayListNode.UUID, rvAudioCue.UUID] error:nil];
             for (NSXMLNode *audioCueNode in audioCueElements) {
                 if ([audioCueNode kind] == NSXMLElementKind) {
                     NSXMLElement *audioCueElement = (NSXMLElement *)audioCueNode;

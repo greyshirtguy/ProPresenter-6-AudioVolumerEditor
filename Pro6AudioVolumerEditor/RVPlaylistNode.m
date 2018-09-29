@@ -39,6 +39,9 @@ extern RVAudioElement *currentRVAudioElementBeingImported;
     // open file, parse XML and populate RVPlaylistNode children
     NSURL *xmlURL = [NSURL fileURLWithPath:audioPlayListsFilePath];
     NSXMLParser *parser = [[ NSXMLParser alloc] initWithContentsOfURL:xmlURL];
+    //[parser setShouldProcessNamespaces:YES];
+    //[parser setShouldReportNamespacePrefixes:YES];
+    //[parser setShouldResolveExternalEntities:YES];
     [parser setDelegate:self];
     BOOL success = [parser parse];
     
@@ -60,6 +63,7 @@ extern RVAudioElement *currentRVAudioElementBeingImported;
         RVPlaylistNode *currentRVPlaylistNodeBeingImported = [[RVPlaylistNode alloc] init];
         currentRVPlaylistNodeBeingImported.type =[attributeDict objectForKey:@"type"];
         currentRVPlaylistNodeBeingImported.displayName = [attributeDict objectForKey:@"displayName"];
+        currentRVPlaylistNodeBeingImported.UUID = [attributeDict objectForKey:@"UUID"];
         
         if ([currentRVPlaylistNodesBeingimported count] == 0) {
             [self.children addObject:currentRVPlaylistNodeBeingImported];
