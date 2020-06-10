@@ -1,10 +1,12 @@
 # Pro6AudioVolumerEditor
 
+![Screenshot](ScreenShot.png)
+
 ProPresenter 6 allows you to add Audio cues to slides - but there is nowhere to set the volume of each cue.
 This application lets you open a Pro6 document that has Audio (and Video) cues attached to slides and edit the volumes
 of each audio (or video) cue on each slide while listening.  
-Version 1.1 now works with Audio Playlists too!
-Only works on Mac. The windows version of Pro6 seems to ignore the volume attribute and plays audio at full-volume.
+
+Custom volumes for media cues only works on Pro6 running on a Mac. The windows version of Pro6 seems to ignore the volume attribute and plays audio at full-volume.
 
 To get a copy of the pre-compiled Application, download "Pro6AudioVolumeEditor.app.zip" from here:
 https://github.com/greyshirtguy/ProPresenter-6-AudioVolumerEditor/releases/latest
@@ -32,7 +34,4 @@ It reads in the Pro6 file as a sinlge XML document object, update the volume att
 and re-saves the XML back to the document.
 For more info, read the source! :)
 
-**TODO:**
-- Allow selection of any library
-- Add playback controls (at least a progress slider to allow user to jump to any point in the audio/video file)
-- Checkout if volume range above 100% works for audio (as it does for video) and allow such adjustments if it works
+
